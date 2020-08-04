@@ -40,7 +40,7 @@ gulp.task('libs-js', function() {
     gulp.src([
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/owl.carousel/dist/owl.carousel.min.js',
-      //'node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js',
+      'node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js',
       'node_modules/fancybox/dist/js/jquery.fancybox.pack.js',
       // 'node_modules/bootstrap/dist/js/bootstrap.min.js',
       //'node_modules/jquery.maskedinput.min.js',

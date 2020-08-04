@@ -1,7 +1,17 @@
 $(document).ready(function(){
+	/*----------------------Меню-----------------*/ 
+	$(".anchor").on("click", function(e){
+		var anchor = $(this);
+		$('html, body').stop().animate({
+			scrollTop: $(anchor.attr('href')).offset().top - 96
+		}, 777);
+		e.preventDefault();
+		return false;
+	});
+	/*---------------------------------------------*/
 	/*------------------Попапы--------------------*/
-	$('.fancybox').fancybox({
-		maxWidth: 460,
+	$('.popup-sm').fancybox({
+		maxWidth: 465,
 		padding: 0,
 		helpers: {
 			overlay: {
@@ -10,8 +20,28 @@ $(document).ready(function(){
 			}
 		}
 	});
-	$('.politic').fancybox({
+	$('.popup-md').fancybox({
 		maxWidth: 600,
+		padding: 0,
+		helpers: {
+			overlay: {
+				closeClick: true,
+				locked: false
+			}
+		}
+	});
+	$('.popup-lg').fancybox({
+		maxWidth: 790,
+		padding: 0,
+		helpers: {
+			overlay: {
+				closeClick: true,
+				locked: false
+			}
+		}
+	});
+	$('.popup-xl').fancybox({
+		maxWidth: 1160,
 		padding: 0,
 		helpers: {
 			overlay: {
@@ -50,5 +80,24 @@ $(document).ready(function(){
 		nav: true,
 		loop: true
 	});
-	/*-----------------------------------------------*/ 
+	/*-----------------------------------------------*/
+	/*----------------Формы----------------------*/
+	$('.form-tel').inputmask('+7 (999) 999-99-99')
+	$(document).on('submit', '.form-ajax', function(){
+			var form = $(this);
+			var action = form.attr('action');
+			var formData = new FormData(form.get(0));
+			$.ajax({
+				url: action,
+				type: 'post',
+				data: formData,
+				contentType: false,
+				processData: false,
+				success: function(data){
+					$('.form-alert').removeClass('d-none');
+				}
+			});
+			return false;
+		});
+	/*------------------------------------------*/  
 });
