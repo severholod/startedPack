@@ -64,15 +64,36 @@ $(document).ready(function(){
 		$('.overlay').removeClass('overlay-active');
 		$(".mobile-menu").removeClass('mobile-menu-active');
 	});
-	$(document).on('click', '.toggle-close', function () {
-		$(this).removeClass('toggle-close').addClass('toggle-open');
-		$(this).next('.mobile-dropdown').hide(300);
-	});
-	$(document).on('click', '.toggle-open', function() {
-		$(this).removeClass('toggle-open').addClass('toggle-close');
-		$(this).next('.mobile-dropdown').show(300);
-	});
 	/*------------------------------------------------*/
+	/*---------------------Шапка---------------------*/
+	var header = $('.header')
+	function headerChange() {
+		offset = window.pageYOffset
+		if(offset > 150) {
+			$('.header').addClass('scroll')
+		} else {
+			$('.header').removeClass('scroll')	
+		}
+	}
+	headerChange()
+	$(window).scroll(function() {
+		headerChange()
+	})
+	/*-----------------------------------------------*/
+	/*-----------------Тогглы-----------------------*/
+	$('.toggle').click(function() {
+		$(this).toggleClass('toggle-open');
+		$(this).next('.toggle-content').toggleClass('toggle-content-open');
+	})
+	$('.read-more-btn').click(function() {
+		$(this).parent().prev('.read-more').toggleClass('read-more-open');
+		if($(this).text() == 'Показать полностью') {
+			$(this).text('Скрыть')
+		} else {
+			$(this).text('Показать полностью')
+		}
+	})
+	/*----------------------------------------------*/
 	/*----------------Слайдер на главной-------------*/
 	$('.banners-slider').owlCarousel({
 		items: 1,
